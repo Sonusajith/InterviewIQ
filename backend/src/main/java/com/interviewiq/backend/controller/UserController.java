@@ -42,4 +42,16 @@ public class UserController {
 
         return "Invalid Credentials";
     }
+    @GetMapping("/{id}")
+    public User getUser(@PathVariable Long id) {
+        return userService.getUserById(id);
+    }
+    
+    @PutMapping("/{id}")
+    public User updateUser(
+            @PathVariable Long id,
+            @RequestBody User user) {
+
+        return userService.updateUser(id, user);
+    }
 }

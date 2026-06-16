@@ -35,6 +35,25 @@ public class UserService {
                 password,
                 user.getPassword());
     }
+    public User getUserById(Long id) {
+        return userRepository.findById(id).orElse(null);
+    }
+    public User updateUser(Long id, User updatedUser) {
+
+        User existingUser = userRepository.findById(id).orElse(null);
+
+        if(existingUser == null) {
+            return null;
+        }
+
+        existingUser.setName(updatedUser.getName());
+        existingUser.setCollege(updatedUser.getCollege());
+        existingUser.setBranch(updatedUser.getBranch());
+        existingUser.setGraduationYear(updatedUser.getGraduationYear());
+        existingUser.setSkills(updatedUser.getSkills());
+
+        return userRepository.save(existingUser);
+    }
     @Autowired
     private PasswordEncoder passwordEncoder;
 }

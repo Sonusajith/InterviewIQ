@@ -17,6 +17,13 @@ public class User {
 
     private String password;
 
+    private String college;
+
+    private String branch;
+
+    private Integer graduationYear;
+
+    private String skills;
     public User() {
     }
 
@@ -51,4 +58,36 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+
+	public String getCollege() {
+		return college;
+	}
+
+	public void setCollege(String college) {
+		this.college = college;
+	}
+
+	public String getBranch() {
+		return branch;
+	}
+
+	public void setBranch(String branch) {
+		this.branch = branch;
+	}
+
+	public Integer getGraduationYear() {
+		return graduationYear;
+	}
+
+	public void setGraduationYear(Integer graduationYear) {
+		this.graduationYear = graduationYear;
+	}
+
+	public String getSkills() {
+		return skills;
+	}
+
+	public void setSkills(String skills) {
+		this.skills = skills;
+	}
 }
