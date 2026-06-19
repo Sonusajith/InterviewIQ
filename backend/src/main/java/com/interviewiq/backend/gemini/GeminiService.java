@@ -13,6 +13,7 @@ public class GeminiService {
 
     @Autowired
     private WebClient webClient;
+
     public String listModels() {
 
         return webClient.get()
@@ -28,6 +29,11 @@ public class GeminiService {
                 "Review this resume and provide improvement suggestions:\n\n"
                 + resumeText;
 
+        return askGemini(prompt);
+    }
+
+    public String askGemini(String prompt) {
+
         String requestBody =
                 """
                 {
@@ -42,7 +48,7 @@ public class GeminiService {
         try {
 
             return webClient.post()
-            		.uri("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey)
+                    .uri("https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=" + apiKey)
                     .header("Content-Type", "application/json")
                     .bodyValue(requestBody)
                     .retrieve()
@@ -50,10 +56,9 @@ public class GeminiService {
                     .block();
 
         } catch (Exception e) {
+
             e.printStackTrace();
             return e.toString();
         }
-
-        
     }
 }
